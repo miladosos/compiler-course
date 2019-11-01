@@ -1,16 +1,16 @@
 #include "lexer/global.h"
-
+#include "lexer/lexan.h"
 
 int main() {
     char *FILEPATH = "/path/to/file.b";
 
-    FILE *file_pointer = fopen(FILEPATH, "r");
-    if (file_pointer == NULL) {
+    FILE *filePointer = fopen(FILEPATH, "r");
+    if (filePointer == NULL) {
         perror("Error while opening file");
         return -1;
     }
 
-    lexan(file_pointer);
+    lexan(filePointer);
 
     return 0;
 }

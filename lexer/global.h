@@ -8,26 +8,43 @@
 #define COMPILER_COURSE_GLOBAL_H
 
 #define BUFFERSIZE  256
-#define EOS    '\0'
-#define NONE   -1
+#define STRINGBUFFERSIZE 256
+#define IDTABLESBUFFERSIZE 256
+#define STRINGTABLEBUFFERSIZE 256
+#define COMMENTTABLEBUFFERSIZE 256
+#define COMMENTBUFFERSIZE 512
 
-#define DOING 100
-#define DONE 101
-#define ERROR 102
-#define KEYWORD 103
-#define OPERATOR 104
-#define DELIMITER 105
+#define KEYWORDSCOUNT 15
+#define OPERATORSCOUNT 21
+#define WHITESPACESCOUNT 3
+#define DELIMITERSCOUNT 8
 
-#endif //COMPILER_COURSE_GLOBAL_H
+#define LEXERTSTARTINGTOKEN 100
+#define KEYWORDTOKEN 101
+#define OPERATORTOKEN 102
+#define DELIMITERTOKEN 103
+#define IDTOKEN 104
+#define STRINGTOKEN 105
+#define COMMENTTOKEN 106
 
-extern int tokenval;   /*  value of token attribute */
-extern int lineno;
-
-struct entry {  /*  form of symbol table entry  */
-    char *lexptr;
-    int token;
+struct Keyword {
+    char *value;
+    int id;
 };
 
-extern struct entry symtable[];  /* symbol table  */
-void emit(int t, int tval);  /*  generates output  */
-void error(char *m);  /* generates all error messages  */
+struct IDTables {
+    char *value;
+    int id;
+};
+
+struct StringTable {
+    char *value;
+    int id;
+};
+
+struct CommentTable {
+    char *value;
+    int id;
+};
+
+#endif //COMPILER_COURSE_GLOBAL_H
